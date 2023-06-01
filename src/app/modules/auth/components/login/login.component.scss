@@ -1,0 +1,96 @@
+@import "src/styles/variables.scss";
+.container {
+  max-width: 400px;
+  margin: 12% auto;
+  padding: 40px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 4px 4px 20px 0px #00000040;
+  position: relative;
+}
+
+.logo {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: $primaryColor;
+}
+
+.login-form {
+  // display: grid;
+  // grid-template-columns: 1fr;
+  // row-gap: 16px;
+  margin-top: 8px;
+}
+
+.login-text p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #808080;
+  margin-bottom: 3px;
+}
+
+.login-text span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #808080;
+  line-height: 1;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Jost";
+  font-style: normal;
+  color: #000000;
+}
+
+.login-form input {
+  height: 4px;
+  width: 88%;
+  padding: 1.2rem;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.login-form input:focus {
+  outline: none;
+}
+
+.login-password {
+  margin-top: 8px;
+}
+
+.primary-btn {
+  background-color: $primaryColor;
+  border-radius: 4px;
+  width: 60px;
+  height: 40px;
+  outline: none;
+  color: #fff;
+  border-color: $primaryColor;
+}
+
+.login-btn {
+  margin-top: 8px;
+  text-align: right;
+  width: 100%;
+  outline: none;
+}
+
+.create {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.create a {
+  color: $primaryColor;
+  font-weight: 500;
+  font-size: 14px;
+}
