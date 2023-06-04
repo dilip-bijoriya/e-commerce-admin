@@ -1,0 +1,28 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.header {
+  display: flex;
+  padding: 0.2rem;
+  justify-content: space-between;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  font-size: 1.5em;
+  margin: 0.6em 0;
+  display: inline-block;
+}
+
+.navigation ul,
+.navigation li {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  display: inline-block;
+  margin: 1.4em 1em 1em 1em;
+}

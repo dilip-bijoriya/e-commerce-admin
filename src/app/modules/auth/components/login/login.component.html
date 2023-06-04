@@ -1,28 +1,36 @@
 <div class="container">
-  <div class="logo"><span>Logo</span></div>
-  <form class="login-form">
+  <div class="logo">
+    <img src="assets/img/logo.svg" alt="">
+  </div>
+  <form class="login-form" [formGroup]="loginForm">
     <div>
       <label for="email">Email Address</label>
-      <input
-        id="email"
-        type="email"
-        placeholder="Enter email address"
-        name="email"
-      />
+      <input id="email" type="email" formControlName="email" placeholder="Enter email address" name="email"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" required />
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Email is required</div>
+        <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+      </div>
     </div>
 
     <div class="login-password">
       <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Enter password"
-        name="password"
-      />
+      <input id="password" type="password" formControlName="password" placeholder="Enter password" name="password"
+        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" required />
+      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+        <div *ngIf="f['password'].errors['required']">Password is required
+        </div>
+        <div *ngIf="f['password'].errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+        <div *ngIf="f['password'].errors['maxlength']">
+          Username must not exceed 40 characters
+        </div>
+      </div>
     </div>
 
     <div class="login-btn">
-      <button type="button" class="primary-btn">Login</button>
+      <button type="button" (click)="onSubmit()" class="primary-btn">Login</button>
     </div>
   </form>
 </div>

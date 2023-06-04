@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<div class="wrapper">
+    <div class="sidebar">
+        <ul class="menu">
+            <li *ngFor="let item of sidebarData">
+                <a href="javascript:void(0)" [routerLink]="item?.path" class="active">
+                    <span class="icon">
+                        <i [class]="item?.icon"></i>
+                    </span>
+                    <span class="item">{{item?.name}}</span>
+                </a>
+            </li>
+            <!-- <li><a href="javascript:void(0)">inventry</a></li>
+            <li><a href="javascript:void(0)">customers</a></li>
+            <li><a href="javascript:void(0)">orders</a></li>
+            <li><a href="javascript:void(0)">transcations</a></li>
+            <li><a href="javascript:void(0)">settings </a></li> -->
+        </ul>
+    </div>
+</div>

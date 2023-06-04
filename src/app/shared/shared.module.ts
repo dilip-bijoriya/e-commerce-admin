@@ -19,8 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    // FormsModule,
+    // ReactiveFormsModule
   ],
   exports: [HeaderComponent, SidebarComponent, InputComponent]
 })
