@@ -2,7 +2,7 @@
     <div class="sidebar">
         <ul class="menu">
             <li *ngFor="let item of sidebarData">
-                <a href="javascript:void(0)" [routerLink]="item?.path" class="active">
+                <a href="javascript:void(0)" (click)="navigationClick(item?.path)" class="active">
                     <span class="icon">
                         <i [class]="item?.icon"></i>
                     </span>
