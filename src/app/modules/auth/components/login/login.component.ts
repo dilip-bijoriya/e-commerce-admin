@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from '../../services/service.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  })
   submitted = false;
   private readonly destroy$: Subject<void> = new Subject<void>();
   constructor(
@@ -36,6 +39,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }

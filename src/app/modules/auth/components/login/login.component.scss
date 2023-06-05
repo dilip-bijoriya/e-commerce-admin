@@ -26,20 +26,6 @@ a {
   margin-top: 8px;
 }
 
-.login-text p {
-  font-size: 14px;
-  font-weight: 400;
-  color: #808080;
-  margin-bottom: 3px;
-}
-
-.login-text span {
-  font-size: 14px;
-  font-weight: 400;
-  color: #808080;
-  line-height: 1;
-}
-
 .login-form label {
   display: block;
   margin-bottom: 8px;
@@ -84,13 +70,9 @@ a {
   outline: none;
 }
 
-.create {
-  margin-top: 16px;
-  text-align: center;
-}
-
-.create a {
-  color: $primaryColor;
-  font-weight: 500;
-  font-size: 14px;
+.invalid-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
 }
