@@ -9,7 +9,8 @@ import { InputComponent } from './components/input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { ModalLogoutComponent } from './components/modal-logout/modal-logout.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { CustomModalService } from '../services/custom-modal/custom-modal.service';
+import { ModalConfirmCancelChangesComponent } from './components/modal-confirm/modal-confirm-cancel-changes/modal-confirm-cancel-changes.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     SidebarComponent,
     InputComponent,
     ModalConfirmComponent,
-    ModalLogoutComponent
+    ModalLogoutComponent,
+    ModalConfirmCancelChangesComponent
   ],
   imports: [
     CommonModule,
@@ -28,8 +30,14 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     // ReactiveFormsModule
   ],
   providers: [
-    BsModalService
+    CustomModalService
   ],
-  exports: [HeaderComponent, SidebarComponent, InputComponent, ModalLogoutComponent, ModalConfirmComponent]
+  exports: [
+    HeaderComponent,
+    SidebarComponent,
+    InputComponent,
+    ModalLogoutComponent,
+    ModalConfirmComponent
+  ]
 })
 export class SharedModule { }

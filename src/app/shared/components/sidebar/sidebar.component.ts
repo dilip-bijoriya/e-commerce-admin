@@ -40,7 +40,6 @@ export class SidebarComponent implements OnInit {
   }
 
   navigationClick(item: string): void {
-    console.log(item, "DILIP");
     this.router.navigate([item]);
   }
 }

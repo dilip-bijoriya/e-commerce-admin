@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalLogoutComponent } from '../modal-logout/modal-logout.component';
+import { ConfirmationModalText } from 'src/app/models/modal-texts';
+import { ConfirmType } from 'src/app/models/modal-confirm';
+import { filter } from 'rxjs';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
+import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +13,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  bsModalRef!: BsModalRef;
+  constructor(private CustomModalService: CustomModalService) { }
 
+  logOut() {
+    this.bsModalRef = this.CustomModalService.show(ModalLogoutComponent);
+  }
+
+  get confirmationText(): ConfirmationModalText {
+    const confirmModalText: ConfirmationModalText = {
+      titleAction: 'Product Update',
+      descriptionMessage: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+      confirmMessage: 'Are you sure you want to proceed?',
+      confirmType: ConfirmType.YES_NO,
+    };
+    return confirmModalText;
+  }
+
+  confirmModel(): void {
+    const confirmModalText: ConfirmationModalText = this.confirmationText;
+    this.bsModalRef = this.CustomModalService.show(ModalConfirmComponent, {
+      initialState: confirmModalText,
+    });
+    this.bsModalRef.content.onClose$
+      .pipe(
+        filter((result: boolean) => result)
+      )
+      .subscribe({
+        next: () => {
+          this.bsModalRef.hide();
+        },
+        error: () => {
+        }
+      });
+  }
 }
