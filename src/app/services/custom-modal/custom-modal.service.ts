@@ -4,7 +4,7 @@ import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
 
 @Injectable()
 export class CustomModalService extends BsModalService {
-  override config!: ModalOptions;
+  override config: ModalOptions;
   constructor(rendererFactory: RendererFactory2, clf: ComponentLoaderFactory) {
     super(rendererFactory, clf, { ignoreBackdropClick: true });
   }

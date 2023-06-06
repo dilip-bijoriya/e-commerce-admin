@@ -11,6 +11,7 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { ModalLogoutComponent } from './components/modal-logout/modal-logout.component';
 import { CustomModalService } from '../services/custom-modal/custom-modal.service';
 import { ModalConfirmCancelChangesComponent } from './components/modal-confirm/modal-confirm-cancel-changes/modal-confirm-cancel-changes.component';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -26,11 +27,13 @@ import { ModalConfirmCancelChangesComponent } from './components/modal-confirm/m
   imports: [
     CommonModule,
     SharedRoutingModule,
+    ModalModule.forRoot(),
     // FormsModule,
     // ReactiveFormsModule
   ],
   providers: [
-    CustomModalService
+    CustomModalService,
+    BsModalRef
   ],
   exports: [
     HeaderComponent,
