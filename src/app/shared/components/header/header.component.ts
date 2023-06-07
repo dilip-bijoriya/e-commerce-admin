@@ -17,7 +17,9 @@ export class HeaderComponent {
   constructor(private CustomModalService: CustomModalService) { }
 
   logOut() {
-    this.bsModalRef = this.CustomModalService.show(ModalLogoutComponent);
+    this.bsModalRef = this.CustomModalService.show(ModalLogoutComponent, {
+      ignoreBackdropClick: false
+    });
   }
 
   get confirmationText(): ConfirmationModalText {
@@ -34,6 +36,8 @@ export class HeaderComponent {
     const confirmModalText: ConfirmationModalText = this.confirmationText;
     this.bsModalRef = this.CustomModalService.show(ModalConfirmComponent, {
       initialState: confirmModalText,
+      class: 'modal-dialog--xs',
+      ignoreBackdropClick: false
     });
     this.bsModalRef.content.onClose$
       .pipe(

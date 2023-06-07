@@ -132,3 +132,219 @@ body {
   color: var(--color_neutral_400);
   font-size: var(--font_size_12);
 }
+
+/*   Footer of modal   */
+.modal-footer {
+  padding: 0 3.6rem 2.1rem;
+  border-top: none;
+}
+
+.modal-footer .btn {
+  margin: 0;
+}
+
+.modal-footer .btn + .btn {
+  margin-left: 0.8rem;
+}
+
+.modal-backdrop,
+.modal {
+  z-index: 5000;
+}
+
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32.5rem;
+  max-width: 100%;
+  height: 90%;
+}
+
+.modal-dialog--xs {
+  width: 34.3rem;
+}
+
+.modal-dialog--sm {
+  width: 48.6rem;
+}
+
+.modal-dialog--sm-responsive {
+  width: 48.6rem;
+}
+
+.modal-dialog--md {
+  width: 60rem;
+  &.empty-state-modal {
+    width: calc(60rem - 2.86rem);
+  }
+}
+
+.modal-dialog--lg {
+  width: 69.1rem;
+}
+
+.modal-dialog--xl {
+  width: 91.4rem;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 0;
+}
+
+.modal-content .empty-state-modal {
+  height: 31.9rem;
+}
+
+.modal-content .empty-state-modal .scrollable-field {
+  height: 30.3rem;
+}
+
+.modal-container--hide-navigate aw-wizard-navigation-bar {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
+}
+
+/*   Head of modal   */
+.modal__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: var(--modal_header_height);
+  padding: var(--modal_header_padding_y) var(--modal_header_padding_x);
+  border-bottom: var(--modal_header_bottom_border_height) solid var(--modal_header_bottom_border_color);
+}
+
+.modal__title {
+  width: 100%;
+  margin: 0;
+  color: var(--modal_header_title_color);
+  font-size: var(--modal_header_title_font_size);
+  font-weight: var(--modal_header_title_font_weight);
+  line-height: var(--modal_header_title_line_height);
+  word-break: break-word;
+}
+
+.modal__subtitle {
+  margin: var(--modal_header_subtitle_margin_top) 0 0;
+  width: 100%;
+  color: var(--modal_header_subtitle_color);
+  font-weight: var(--modal_header_subtitle_font_weight);
+  font-size: var(--modal_header_subtitle_font_size);
+  line-height: var(--modal_header_subtitle_line_height);
+}
+
+.modal__counter {
+  font-size: var(--modal_header_counter_font_size);
+  font-weight: var(--modal_header_counter_font_weight);
+  line-height: var(--modal_header_counter_line_height);
+  color: var(--modal_header_counter_color);
+}
+
+/*   Body of modal   */
+.modal-body {
+  padding: 0;
+}
+
+.modal-body .nav {
+  justify-content: flex-end;
+  border: none;
+  margin-bottom: 2.4rem;
+  background: transparent;
+  transform: translate(0, calc(0rem - var(--modal_header_height)));
+}
+
+.modal-body .nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 13.6rem;
+  border: none;
+  border-radius: 0;
+  color: var(--color_neutral_700);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  font-size: var(--modal_nav_link_font_size);
+  height: var(--modal_header_height);
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 0.15rem;
+    background-color: transparent;
+  }
+
+  &:hover {
+    color: var(--color_dark_900);
+  }
+}
+
+.modal-body .nav-link.active {
+  color: var(--color_dark_900);
+  box-shadow: 0 0.3rem 0.6rem -0.15rem var(--color_secondary_400);
+
+  &:after {
+    background-color: var(--color_secondary_600);
+  }
+}
+
+.modal-body .tab-content {
+  margin-top: calc(0rem - var(--modal_header_height));
+}
+
+.modal-body .tabs--simple .nav {
+  transform: translate(0);
+}
+
+.modal-body .tabs--simple .nav-link {
+  width: auto;
+  height: auto;
+}
+
+.modal-body .tabs--simple .tab-content {
+  margin-top: 0;
+}
+
+.create-form {
+  padding: 0 2.9rem;
+}
+
+.create-form-title,
+.create-form h3,
+.update-form-title,
+.update-form-title h3 {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+  color: var(--color_neutral_400);
+  font-size: var(--font_size_16);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.create-form p {
+  color: var(--color_neutral_400);
+  font-size: var(--font_size_12);
+}
+
+.create-form [class^="col-"] {
+  padding: 0 1.8rem;
+}
+
+.modal__select-block {
+  max-width: 30%;
+}
+
+.modal + .modal {
+  background: rgba(0, 0, 0, 0.3);
+}
