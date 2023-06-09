@@ -27,3 +27,47 @@ a {
   display: inline-block;
   margin: 1.4em 1em 1em 1em;
 }
+
+.icon-button {
+  position: relative;
+  // display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  // color: #333333;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.icon-button i {
+  font-size: 18px;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+}
+
+.icon-button:active {
+  background: #cccccc;
+}
+
+.icon-button__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 15px;
+  height: 15px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  border-radius: 50%;
+}
+
+.nav {
+  font-size: 18px;
+}

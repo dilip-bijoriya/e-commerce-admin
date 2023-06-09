@@ -14,6 +14,7 @@ import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.s
 })
 export class HeaderComponent {
   bsModalRef!: BsModalRef;
+  count: number = 2;
   constructor(private CustomModalService: CustomModalService) { }
 
   logOut() {

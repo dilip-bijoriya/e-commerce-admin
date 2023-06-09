@@ -13,12 +13,12 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Inventry',
       path: '/dashboard/inventry',
-      icon: 'icon-house-outline-2'
+      icon: 'icon-buggy-concrete-concrete-trolley-construction-trolley-construction-wheel-barrow-outline-1'
     },
     {
       name: 'Customers',
       path: '',
-      icon: 'icon-approve-user-outline-1'
+      icon: 'icon-account-outline-1'
     },
     {
       name: 'Orders',
