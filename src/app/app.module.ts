@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomModalService } from './services/custom-modal/custom-modal.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { CustomModalService } from './services/custom-modal/custom-modal.service
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [CustomModalService],
+  providers: [CustomModalService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

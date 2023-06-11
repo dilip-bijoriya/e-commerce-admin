@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ServiceService } from '../../services/service.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: ServiceService,
-    private router: Router
+    private router: Router,
+    private cookie: CookieService
   ) { }
   get f() {
     return this.loginForm.controls;
@@ -50,7 +52,7 @@ export class LoginComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
-          console.log(res);
+          this.cookie.set('blue_basket', JSON.stringify(res));
           this.router.navigate(['/dashboard']);
         },
         error: (error) => { },
