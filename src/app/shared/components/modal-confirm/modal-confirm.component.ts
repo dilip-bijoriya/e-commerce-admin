@@ -13,20 +13,17 @@ import { ViewEncapsulation } from '@angular/core';
 })
 export class ModalConfirmComponent implements OnInit {
   customButtonType: ButtonTitle = {} as ButtonTitle;
-  customCallback!: Function;
+  customCallback: Function;
 
-  confirmButtonText!: TextButtonsByType;
-  customButtonAction!: CustomButtonAction;
+  confirmButtonText: TextButtonsByType;
+  customButtonAction: CustomButtonAction;
 
-  titleAction!: string;
-  headerTitle!: string;
-  confirmMessage!: string;
-  descriptionMessage!: string;
-  descriptionDown?: string;
+  titleAction: string;
+  headerTitle: string;
+  confirmMessage: string;
+  descriptionMessage: string;
 
   confirmType: ConfirmType = ConfirmType.YES_NO;
-  severity: Severity = Severity.DANGER;
-
   onClose$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
@@ -46,10 +43,6 @@ export class ModalConfirmComponent implements OnInit {
   }
 
   confirm(): void {
-    if (this.confirmType === ConfirmType.CUSTOM) {
-      this.customCallback();
-    }
-
     this.CustomModalService.hide(this.bsModalRef.id);
     this.onClose$.next(true);
     // this.bsModalRef.hide();
@@ -61,32 +54,8 @@ export class ModalConfirmComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
-  get isSingleButton(): boolean {
-    return this.confirmType === ConfirmType.BACK;
-  }
-
   get textButtonsByType(): ButtonTitle {
     return this.confirmButtonText[this.confirmType];
-  }
-
-  get isDanger(): boolean {
-    return this.severity === Severity.DANGER;
-  }
-
-  get isWarning(): boolean {
-    return this.severity === Severity.WARNING;
-  }
-
-  get isInfo(): boolean {
-    return this.severity === Severity.INFO;
-  }
-
-  get isPrimary(): boolean {
-    return this.isWarning || this.isInfo;
-  }
-
-  get isCreate(): boolean {
-    return this.severity === Severity.INFO;
   }
 
   get isOkButton(): boolean {

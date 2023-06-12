@@ -16,9 +16,10 @@ export class InventoryComponent implements OnInit {
   public search = {
     text: '',
     size: 10,
-    offset: 0,
+    offset: 1,
     total: 0,
   };
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -33,9 +34,8 @@ export class InventoryComponent implements OnInit {
   }
 
   private fetchProductData() {
-    let offset = this.search.size * this.search.offset;
     this.productService
-      .getProductListData(offset, this.search.size, this.search.text)
+      .getProductListData(this.search.offset, this.search.size, this.search.text)
       .pipe()
       .subscribe({
         next: (res: any) => {
@@ -50,13 +50,13 @@ export class InventoryComponent implements OnInit {
       });
   }
 
-  onPaginationChange(event: any) {
-    this.search.offset = event.currentPage - 1;
+  onPaginationChange(page: number) {
+    this.search.offset = page;
     this.fetchProductData();
   }
 
   onTextChange(event: any) {
-    this.search.offset = 0;
+    this.search.offset = 1;
     this.search.text = event;
     this.fetchProductData();
   }

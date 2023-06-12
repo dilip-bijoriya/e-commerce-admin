@@ -1,41 +1,9 @@
 .pagination {
-    float: right;
+  float: right;
 }
 
-ul.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-ul.pagination li {
-    display: inline;
-}
-
-ul.pagination li a {
-    color: black;
-    cursor: pointer;
-    float: left;
-    width: 30px;
-    padding: 4px 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 5px;
-    text-decoration: none;
-}
-
-ul.pagination li a.active {
-    background-color: #00b382;
-    color: white;
-    border-radius: 50%;
-}
-
-ul.pagination li a:hover:not(.active) {
-    background-color: #ddd;
-}
 .pageing {
-    display: flex;
-    align-items: center;
-    padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
 }

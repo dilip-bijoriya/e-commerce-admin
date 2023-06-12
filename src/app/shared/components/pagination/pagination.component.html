@@ -1,4 +1,9 @@
-<ul class="pagination " *ngIf="page">
-    <li style="text-align: center" *ngFor="let i of page.pages;let p=index" (click)="onIndexChange(i,p)"><a
-            [ngClass]="{'active':i==page.currentPage}">{{i}}</a></li>
+<ul class="pagination " *ngIf="total>limit">
+    <!-- prev btn -->
+    <i class="icon-left-arrow-outline-3"></i>
+    <select (change)="onIndexChange($event)">
+        <option *ngFor="let i of getArrayOfPages(total,limit)">{{i}}</option>
+    </select>
+    <i class="icon-right-arrow-outline-4"></i>
+    <!-- next btn -->
 </ul>

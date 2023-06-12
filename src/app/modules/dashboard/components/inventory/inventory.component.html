@@ -28,7 +28,7 @@
             </thead>
             <tbody *ngIf=listFound>
                 <tr *ngFor="let item of productList; let i = index">
-                    <td>{{i+1}}</td>
+                    <td>{{(i+1)+((search.offset-1)*search.size)}}</td>
                     <td>
                         <img src="{{item?.image}}" class="productImage" alt="">
                     </td>
@@ -43,7 +43,7 @@
             </tbody>
             <tbody *ngIf=!listFound>
                 <tr>
-                    <th colspan="12" class="text-center p-4" style="color:red;">No Data Available</th>
+                    <th colspan="12" class="text-center p-4">No Data Available</th>
                 </tr>
             </tbody>
         </table>
@@ -54,9 +54,8 @@
 <div class="pageing">
     <p>Show 50 out of 200 items</p>
     <div class="pagination">
-        <app-pagination class="pagination-div" [onPerameterChange]="onPagination" *ngIf=" search.total>0 && listFound"
-            [size]="search.size" (onPaginationChange)="onPaginationChange($event)" [total]="search.total"
-            [offset]="search.offset">
+        <app-pagination class="pagination-div" [limit]="search.size" (onPaginationChange)="onPaginationChange($event)"
+            [total]="search.total" [selected]="search.offset">
         </app-pagination>
     </div>
 </div>
