@@ -1,15 +1,19 @@
 <div class="main-cont">
     <div class="searchBox">
-        <i class="icon-research-outline-1"></i>
-        <input type="text" placeholder="Search inventory...">
-        <i class="icon-filters-outline-1"></i>
+        <div class="filterArea">
+            <i class="icon-research-outline-1"></i>
+            <input type="text" (ngModelChange)="onTextChange($event)" [(ngModel)]="search.text"
+                placeholder="Search inventory...">
+            <i class="icon-filters-outline-1"></i>
+        </div>
+
         <button class="prime-btn" [routerLink]="['/dashboard/add-product']">
             <i class="icon-plus-outline-1"></i>
             Add Product
         </button>
     </div>
 
-    <div class="box">
+    <div class="box tableBox" [ngStyle]="{'height.px':  innerHeight}">
         <!-- table code here  -->
         <table>
             <thead>
@@ -22,7 +26,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf=listFound>
                 <tr *ngFor="let item of productList; let i = index">
                     <td>{{i+1}}</td>
                     <td>
@@ -37,13 +41,22 @@
                     </td>
                 </tr>
             </tbody>
+            <tbody *ngIf=!listFound>
+                <tr>
+                    <th colspan="12" class="text-center p-4" style="color:red;">No Data Available</th>
+                </tr>
+            </tbody>
         </table>
     </div>
 
-    <div class="pageing">
-        <p>Show 50 out of 200 items</p>
-        <div class="pagination">
-            sss
-        </div>
+
+</div>
+<div class="pageing">
+    <p>Show 50 out of 200 items</p>
+    <div class="pagination">
+        <app-pagination class="pagination-div" [onPerameterChange]="onPagination" *ngIf=" search.total>0 && listFound"
+            [size]="search.size" (onPaginationChange)="onPaginationChange($event)" [total]="search.total"
+            [offset]="search.offset">
+        </app-pagination>
     </div>
 </div>

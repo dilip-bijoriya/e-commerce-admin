@@ -6,11 +6,12 @@ import { ConfirmType } from 'src/app/models/modal-confirm';
 import { filter } from 'rxjs';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.service';
-
+import { ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
   bsModalRef!: BsModalRef;

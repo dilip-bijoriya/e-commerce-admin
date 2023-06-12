@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { ModalInventryComponent } from './components/modal-inventry/modal-inventry.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

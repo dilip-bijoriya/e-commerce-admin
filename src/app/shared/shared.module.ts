@@ -12,6 +12,7 @@ import { ModalLogoutComponent } from './components/modal-logout/modal-logout.com
 import { CustomModalService } from '../services/custom-modal/custom-modal.service';
 import { ModalConfirmCancelChangesComponent } from './components/modal-confirm/modal-confirm-cancel-changes/modal-confirm-cancel-changes.component';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
     InputComponent,
     ModalConfirmComponent,
     ModalLogoutComponent,
-    ModalConfirmCancelChangesComponent
+    ModalConfirmCancelChangesComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
     SidebarComponent,
     InputComponent,
     ModalLogoutComponent,
-    ModalConfirmComponent
+    ModalConfirmComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

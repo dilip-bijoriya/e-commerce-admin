@@ -11,16 +11,20 @@
   padding: 0rem;
 }
 
+app-sidebar {
+  // margin-top: 100px;
+}
+
 .sidebar {
   display: inline-block;
-  background: #efefef;
-  padding-top: 4rem;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  max-width: 0;
-  transition: all 0.2s var(--timing-func);
+  background: #fff;
+
+  // position: fixed;
+  // left: 0;
+  // top: 0;
+  // bottom: 0;
+  // max-width: 0;
+  // transition: all 0.2s var(--timing-func);
 }
 
 .wrapper .sidebar ul li a .icon {

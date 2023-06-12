@@ -1,11 +1,14 @@
-<div class="header">
+<div class="MainWrap">
     <app-header></app-header>
-    <aside>
+    <div class="DataWrap">
+
         <div class="sidebar_wrap">
             <app-sidebar></app-sidebar>
         </div>
-    </aside>
-    <div class="container-fluid  main-content">
-        <router-outlet></router-outlet>
+
+        <div class="container-fluid  main-content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
+
 </div>

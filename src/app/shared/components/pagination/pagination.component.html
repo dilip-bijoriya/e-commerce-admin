@@ -1,0 +1,4 @@
+<ul class="pagination " *ngIf="page">
+    <li style="text-align: center" *ngFor="let i of page.pages;let p=index" (click)="onIndexChange(i,p)"><a
+            [ngClass]="{'active':i==page.currentPage}">{{i}}</a></li>
+</ul>

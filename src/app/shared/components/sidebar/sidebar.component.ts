@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ViewEncapsulation } from '@angular/core';
 declare var $: any;
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SidebarComponent implements OnInit {
   constructor(private router: Router) { }
+  public innerHeight: any;
 
   sidebarData: Array<any> = [
     {
@@ -36,7 +39,15 @@ export class SidebarComponent implements OnInit {
       icon: 'icon-setting-outline-1'
     },
   ]
+
   ngOnInit(): void {
+    this.innerHeight = window.innerHeight - 100;
+  }
+
+  @HostListener('window:resize', ['$event'])
+
+  onWindowResize() {
+    this.innerHeight = window.innerHeight - 100;
   }
 
   navigationClick(item: string): void {

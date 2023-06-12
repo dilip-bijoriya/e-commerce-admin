@@ -17,8 +17,8 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient, private cookie: CookieService) { }
 
-  getProductListData(): Observable<void> {
-    return this.httpClient.get<void>(`${this.baseUrl}/productList`, this.getHeaders());
+  getProductListData(pageNumber: number, pageSize: number, search: string): Observable<void> {
+    return this.httpClient.get<void>(`${this.baseUrl}/productList?page=${pageNumber}&limit=${pageSize}&search=${search}`, this.getHeaders());
   }
 
   getHeaders() {

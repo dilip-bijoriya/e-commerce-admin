@@ -4,10 +4,18 @@
   margin-right: initial;
   transition: 0.5s;
   padding-top: 20px;
-  height: 100%;
-  min-height: calc(100vh - 70px);
-  background: #edf1f5;
+  // height: 100%;
+  // min-height: calc(100vh - 70px);
+  // background: #edf1f5;
 }
 .main-content.full-width {
   width: calc(100% - 50px);
+}
+.MainWrap {
+  .DataWrap {
+    display: flex;
+    .sidebar_wrap {
+      background-color: #fff;
+    }
+  }
 }

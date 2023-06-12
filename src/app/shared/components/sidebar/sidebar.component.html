@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="sidebar">
+    <div class="sidebar" [ngStyle]="{'height.px':  innerHeight}">
         <ul class="menu">
             <li *ngFor="let item of sidebarData">
                 <a href="javascript:void(0)" (click)="navigationClick(item?.path)" class="active">

@@ -1,38 +1,37 @@
+@import "src/styles/variables.scss";
+
 .main-cont {
   padding: 20px;
 }
-.searchBox {
-  box-sizing: border-box;
-  background: #ffffff;
-  border-radius: 8px;
-  height: 60px;
-  padding: 6px;
-}
-
-.searchBox .prime-btn {
-  position: absolute;
-  right: 28px;
-  top: 125px;
-  font-weight: 500;
-  background-color: #ffffff;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.searchBox input {
-  width: 80%;
-  padding: 14px 15px 14px 40px;
-  border: none;
-}
-
-input:focus {
-  outline: none;
-}
 
 .box {
-  margin-top: 16px;
-  width: 100%;
+  h1 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    padding: 8px;
+  }
+}
+
+.input-group input {
   background: #ffffff;
-  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  height: 29px;
+  padding: 2px;
+}
+
+.commonBtn {
+  margin-top: 10px;
+  text-align: right;
+  .primary-btn {
+    background-color: $primaryColor;
+    border-radius: 4px;
+    width: 60px;
+    height: 40px;
+    outline: none;
+    color: #fff;
+    border-color: $primaryColor;
+    cursor: pointer;
+  }
 }

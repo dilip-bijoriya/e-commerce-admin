@@ -3,17 +3,30 @@ a {
   color: #000;
 }
 
-body {
-  min-height: 1200px;
-}
+// body {
+//   min-height: 1200px;
+// }
 
-.header {
-  display: flex;
-  padding: 0.2rem;
-  justify-content: space-between;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
+app-header {
+  .header {
+    // position: fixed;
+    // left: 0;
+    // right: 0;
+    // width: 100%;
+    background-color: #fff;
+    height: unset;
+    display: flex;
+    padding: 0.2rem;
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    justify-content: space-between;
+    .header {
+      justify-content: space-between;
+      box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
-
 .logo img {
   font-size: 1.5em;
   margin: 0.6em 0;
@@ -29,7 +42,6 @@ body {
 
 .navigation li {
   display: inline-block;
-  margin: 1.4em 1em 1em 1em;
 }
 
 .icon-button {
@@ -45,8 +57,7 @@ body {
   outline: none;
   border-radius: 50%;
 }
-
-.icon-button i {
+.count .icon-button i {
   font-size: 18px;
 }
 
