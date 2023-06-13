@@ -1,7 +1,12 @@
 @import "src/styles/variables.scss";
 
-.main-cont {
-  padding: 20px;
+app-add-product {
+  .main-cont {
+    .tableBox {
+      // height: 390px;
+      overflow-y: auto;
+    }
+  }
 }
 
 .box {

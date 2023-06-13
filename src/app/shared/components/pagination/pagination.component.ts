@@ -27,26 +27,11 @@ export class PaginationComponent implements OnInit {
     return arr;
   }
 
-  previousPage() {
-    if (this.selected > 1) {
-      this.selected--;
-      this.onPaginationChange.emit(this.selected);
-    }
-  }
-
-  nextPage() {
-    const totalPages = this.getArrayOfPages(this.total, this.limit).length;
-    if (this.selected < totalPages) {
-      this.selected++;
-      this.onPaginationChange.emit(this.selected);
-    }
-  }
-
   public onIndexChange(event: any) {
-    const selectedPage = Number(event.target.value) || 1;
-    if (selectedPage !== this.selected) {
-      this.selected = selectedPage;
-      this.onPaginationChange.emit(this.selected);
-    }
+    this.onPaginationChange.emit(Number(event.target.value) || 1)
+  }
+
+  changeTo(pageNumber: number) {
+    this.onPaginationChange.emit(pageNumber);
   }
 }

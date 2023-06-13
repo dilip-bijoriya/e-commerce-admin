@@ -32,8 +32,8 @@ import { ButtonComponent } from './components/button/button.component';
     CommonModule,
     SharedRoutingModule,
     ModalModule.forRoot(),
-    // FormsModule,
-    // ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CustomModalService,

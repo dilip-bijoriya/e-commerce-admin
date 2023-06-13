@@ -8,12 +8,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class InputComponent {
   @Input() label: string;
+  @Input() type: string;
   @Input() controlName: string;
   @Input() parentForm: FormGroup;
   @Input() placeholder: string;
   @Input() id: string;
+  @Input() pattern: string;
 
-  get control() {
+  get f() {
     return this.parentForm.get(this.controlName) as FormControl;
   }
 

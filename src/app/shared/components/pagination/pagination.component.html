@@ -1,12 +1,12 @@
 <ul class="pagination " *ngIf="total>limit">
     <!-- prev btn -->
-    <button type="submit" class="prev-arrow" [disabled]="selected === 1" (click)="previousPage()">
+    <button type="submit" class="prev-arrow" [disabled]="selected === 1" (click)="changeTo(selected -1)">
         <i class="icon-left-arrow-outline-3"></i>
     </button>
-    <select (change)="onIndexChange($event)">
+    <select [(ngModel)]="selected" (change)="onIndexChange($event)">
         <option *ngFor="let i of getArrayOfPages(total,limit)" [value]="i">Page {{i}}</option>
     </select>
-    <button type="submit" class="next-arrow" (click)="nextPage()"
+    <button type="submit" class="next-arrow" (click)="changeTo(selected + 1)"
         [disabled]="selected === getArrayOfPages(total, limit).length">
         <i class="icon-right-arrow-outline-4"></i>
     </button>

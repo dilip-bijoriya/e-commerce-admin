@@ -1,7 +1,7 @@
-<!-- <div [formGroup]="parentForm">
+<div [formGroup]="parentForm">
     <label>{{ label }}</label>
-    <input [formControlName]="controlName" />
-    <div *ngIf="control.invalid && control.touched">
-        <div *ngIf="control.errors.['required']">This field is required</div>
+    <input [formControlName]="controlName" [type]="type" [placeholder]="placeholder" />
+    <div *ngIf="f.invalid && f.touched">
+        <div *ngIf="f?.errors?.['required']" class="error">This field is required</div>
     </div>
-</div> -->
+</div>

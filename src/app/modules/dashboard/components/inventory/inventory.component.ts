@@ -43,17 +43,13 @@ export class InventoryComponent implements OnInit {
           this.search.total = res.response.total;
           this.onPagination.next(this.search);
           this.productList = res.response.data;
+          this.search.offset
         },
         error: () => {
           this.listFound = false;
         },
       });
   }
-
-  // currentPage: any;
-  // updateCurrentPage(selectedPage: number) {
-  //   this.currentPage = selectedPage;
-  // }
 
   onPaginationChange(page: number) {
     this.search.offset = page;
