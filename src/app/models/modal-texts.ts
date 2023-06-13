@@ -1,4 +1,4 @@
-import { ButtonTitle, ConfirmType, Severity } from './modal-confirm';
+import { ButtonTitle, ConfirmType } from './modal-confirm';
 
 export class ConfirmTexts {
   header?: string;
@@ -21,12 +21,7 @@ export interface ConfirmationModalText {
   descriptionMessage?: string;
   customButtonType?: ButtonTitle;
   confirmType?: ConfirmType;
-  severity?: Severity;
   item?: string | number;
-}
-
-export interface ConfirmationModalTextWIthCount extends ConfirmationModalText {
-  itemsCount: number;
 }
 
 export interface ModalContentStructure {

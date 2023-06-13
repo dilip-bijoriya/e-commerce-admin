@@ -50,6 +50,11 @@ export class InventoryComponent implements OnInit {
       });
   }
 
+  // currentPage: any;
+  // updateCurrentPage(selectedPage: number) {
+  //   this.currentPage = selectedPage;
+  // }
+
   onPaginationChange(page: number) {
     this.search.offset = page;
     this.fetchProductData();

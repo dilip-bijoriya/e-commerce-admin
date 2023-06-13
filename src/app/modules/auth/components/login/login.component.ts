@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from '../../services/service.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { LOGIN_TYPE } from '../constant';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
+  label = LOGIN_TYPE.LABEL;
+  type = LOGIN_TYPE.TYPE;
+  class = LOGIN_TYPE.CLASS;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),

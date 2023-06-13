@@ -30,7 +30,7 @@
     </div>
 
     <div class="login-btn">
-      <button type="button" (click)="onSubmit()" class="primary-btn">Login</button>
+      <app-button [label]="label" [class]="class" type="submit" (clicked)="onSubmit()"></app-button>
     </div>
   </form>
 </div>

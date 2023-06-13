@@ -5,17 +5,6 @@ export enum ConfirmType {
     CONFIRM_CANCEL,
     OK
 }
-
-export enum Severity {
-    DANGER,
-    WARNING,
-    INFO,
-}
-
-export enum CustomButtonAction {
-    NAVIGATE,
-}
-
 export interface TextButtonsByType {
     [key: string]: ButtonTitle;
 }

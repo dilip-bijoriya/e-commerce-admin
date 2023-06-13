@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
-import { ButtonTitle, ConfirmType, CustomButtonAction, Severity, TextButtonsByType } from 'src/app/models/modal-confirm';
+import { ButtonTitle, ConfirmType, TextButtonsByType } from 'src/app/models/modal-confirm';
 import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.service';
 import { ViewEncapsulation } from '@angular/core';
 @Component({
@@ -16,7 +16,6 @@ export class ModalConfirmComponent implements OnInit {
   customCallback: Function;
 
   confirmButtonText: TextButtonsByType;
-  customButtonAction: CustomButtonAction;
 
   titleAction: string;
   headerTitle: string;

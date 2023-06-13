@@ -20,9 +20,6 @@ a {
 }
 
 .login-form {
-  // display: grid;
-  // grid-template-columns: 1fr;
-  // row-gap: 16px;
   margin-top: 8px;
 }
 
@@ -55,19 +52,18 @@ a {
 
 .primary-btn {
   background-color: $primaryColor;
-  border-radius: 4px;
-  width: 60px;
-  height: 40px;
-  outline: none;
   color: #fff;
-  border-color: $primaryColor;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .login-btn {
   margin-top: 8px;
-  text-align: right;
-  width: 100%;
-  outline: none;
+  display: flex;
+  justify-content: right;
 }
 
 .invalid-feedback {
