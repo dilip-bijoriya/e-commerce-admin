@@ -1,25 +1,22 @@
 <div class="box">
     <div class="modal__header">
-        <h2 class="modal__title" data-test="modal-confirm-title">
+        <h2 class="modal__title">
             {{ titleAction }} {{ headerTitle }}
         </h2>
     </div>
 
     <div class="modal-body">
-        <!-- <img src="assets/img/unclaim.svg" alt="" *ngIf="isDanger" /> -->
         <img src="assets/img/warning.svg" alt="" />
-        <!-- <img src="assets/img/file_created.svg" alt="" *ngIf="isCreate" /> -->
-        <p *ngIf="descriptionMessage" class="modal-description" [innerHTML]="descriptionMessage"
-            data-test="modal-confirm-description"></p>
-        <h4 [innerHTML]="confirmMessage" data-test="modal-confirm-message"></h4>
+        <p *ngIf="descriptionMessage" class="modal-description" [innerHTML]="descriptionMessage"></p>
+        <h4 [innerHTML]="confirmMessage"></h4>
     </div>
 
     <div class="modal-footer">
         <ng-container>
-            <button type="button" class="btn-outline--primary" (click)="decline()" data-test="modal-decline-main">
+            <button type="button" class="btn-outline--primary" (click)="decline()">
                 <span class="btn__label">{{ textButtonsByType.reject }}</span>
             </button>
-            <button type="button" class="btn--primary" (click)="confirm()" data-test="modal-confirm-main">
+            <button type="button" class="btn--primary" (click)="confirm()">
                 <span class="btn__label">{{ textButtonsByType.confirm }}</span>
             </button>
         </ng-container>

@@ -14,7 +14,9 @@ export class InputComponent {
   @Input() placeholder: string;
   @Input() id: string;
   @Input() pattern: string;
-
+  @Input() value: any;
+  @Input() disabled: boolean;
+  @Input() readOnly: boolean;
   get f() {
     return this.parentForm.get(this.controlName) as FormControl;
   }
@@ -24,7 +26,7 @@ export class InputComponent {
   ngOnInit() {
     this.parentForm.addControl(
       this.controlName,
-      new FormControl('', Validators.required)
+      new FormControl({ value: this.value, disabled: this.disabled }, Validators.required)
     );
   }
 

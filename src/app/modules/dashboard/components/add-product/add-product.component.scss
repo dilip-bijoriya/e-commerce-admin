@@ -29,14 +29,4 @@ app-add-product {
 .commonBtn {
   margin-top: 10px;
   text-align: right;
-  .primary-btn {
-    background-color: $primaryColor;
-    border-radius: 4px;
-    width: 60px;
-    height: 40px;
-    outline: none;
-    color: #fff;
-    border-color: $primaryColor;
-    cursor: pointer;
-  }
 }

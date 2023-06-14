@@ -14,6 +14,7 @@ import { ModalConfirmCancelChangesComponent } from './components/modal-confirm/m
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ButtonComponent } from './components/button/button.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ButtonComponent } from './components/button/button.component';
     ModalLogoutComponent,
     ModalConfirmCancelChangesComponent,
     PaginationComponent,
-    ButtonComponent
+    ButtonComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { ButtonComponent } from './components/button/button.component';
     ModalLogoutComponent,
     ModalConfirmComponent,
     PaginationComponent,
-    ButtonComponent
+    ButtonComponent,
+    FileUploadComponent
   ]
 })
 export class SharedModule { }

@@ -4,3 +4,7 @@ export enum LOGIN_TYPE {
     LABEL = 'Login',
     CLASS = 'primary-btn'
 }
+
+export enum BUTTON_TYPE {
+    LABEL = 'Create'
+}

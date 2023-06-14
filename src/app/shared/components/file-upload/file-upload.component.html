@@ -1,0 +1,10 @@
+<div>
+    <input type="file" (change)="onFileChange($event)" multiple>
+</div>
+
+<div *ngFor="let files of images; let i = index" class="image-grid">
+    <img [src]="files" alt="Image" width="100">
+    <button (click)="delete(i)">
+        <i class="icon-trash-outline-1"></i>
+    </button>
+</div>

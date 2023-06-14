@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'add-product',
         component: AddProductComponent
+      },
+      {
+        path: 'add-product/:productId/:action',
+        component: AddProductComponent
       }
     ]
   }

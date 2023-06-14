@@ -12,6 +12,7 @@ export class ProductService {
 
   public httpOptions = {
     headers: new HttpHeaders({
+      'Content-Type': 'application/json'
     }),
   };
 
@@ -19,6 +20,14 @@ export class ProductService {
 
   getProductListData(pageNumber: number, pageSize: number, search: string): Observable<void> {
     return this.httpClient.get<void>(`${this.baseUrl}/productList?page=${pageNumber}&limit=${pageSize}&search=${search}`, this.getHeaders());
+  }
+
+  delete(productId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseUrl}/deleteProduct/${productId}`, null, this.getHeaders());
+  }
+
+  getByOne(productId: string): Observable<void> {
+    return this.httpClient.get<void>(`${this.baseUrl}/productGetByOne/${productId}`, this.getHeaders());
   }
 
   getHeaders() {

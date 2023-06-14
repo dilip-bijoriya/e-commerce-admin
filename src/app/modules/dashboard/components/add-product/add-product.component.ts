@@ -1,6 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
+import { BUTTON_TYPE, LOGIN_TYPE } from 'src/app/modules/auth/components/constant';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -10,31 +13,64 @@ import { ViewEncapsulation } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
   form: FormGroup;
+  label = BUTTON_TYPE.LABEL;
+  type = LOGIN_TYPE.TYPE;
+  class = LOGIN_TYPE.CLASS;
   public innerHeight: any;
-  constructor(private fb: FormBuilder) { }
+  initialValue: string = '';
+  isDisabled: boolean = false;
+  isReadOnly: boolean = false;
+  productId: any;
+  uploadedFiles: File[] = [];
+  constructor(
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService
+  ) {
+    this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
+  }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      name: ['', [Validators.required]]
-    });
+    this.form = this.fb.group({});
 
-    this.innerHeight = window.innerHeight - 240;
+    this.innerHeight = window.innerHeight - 200;
+    if (this.productId) {
+      this.getByOneProduct();
+    }
   }
 
   @HostListener('window:resize', ['$event'])
 
   onWindowResize() {
-    this.innerHeight = window.innerHeight - 240;
+    this.innerHeight = window.innerHeight - 200;
+  }
+
+  private getByOneProduct() {
+    this.productService.getByOne(this.productId).pipe().subscribe({
+      next: (res: any) => {
+        this.form.get('name')?.setValue(res.response.name);
+        this.form.get('category')?.setValue(res.response.category);
+        this.form.get('description')?.setValue(res.response.description);
+        this.form.get('price')?.setValue(res.response.price);
+        this.form.get('inventry')?.setValue(res.response.inventry);
+        this.form.get('tags')?.setValue(res.response.tags);
+      },
+      error: () => { }
+    })
   }
 
   submit() {
     if (this.form.valid) {
-      return
+      return console.log(this.form.value);
     } else {
       Object.values(this.form.controls).forEach((control) => {
         control.markAsTouched();
       });
     }
 
+  }
+
+  onFilesUploaded(files: File[]) {
+    this.uploadedFiles = files;
   }
 }

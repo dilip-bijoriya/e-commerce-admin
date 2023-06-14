@@ -14,7 +14,8 @@
                         <!-- <label for="name">Name</label> -->
                         <!-- <input type="text" placeholder="Enter name" id="name"> -->
                         <app-input label="Name" controlName="name" placeholder="Enter name" type="text"
-                            [parentForm]="form" id="name"></app-input>
+                            [parentForm]="form" id="name" [value]="initialValue" [disabled]="isDisabled"
+                            [readOnly]="isReadOnly"></app-input>
                     </div>
                     <div class="input-group grid3">
                         <!-- <label for="category">Category</label>
@@ -59,7 +60,9 @@
                 <h1>Images</h1>
                 <div class="grid">
                     <div class="input-group grid3">
-                        <input type="file" id="file">
+                        <!-- <input type="file" id="file"> -->
+                        <app-file-upload [files]="uploadedFiles"
+                            (filesUploaded)="onFilesUploaded($event)"></app-file-upload>
                     </div>
                 </div>
             </div>
