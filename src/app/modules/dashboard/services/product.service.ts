@@ -18,6 +18,14 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient, private cookie: CookieService) { }
 
+  createProduct(payload: any): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseUrl}/createProduct`, payload, this.getHeaders());
+  }
+
+  updateProduct(payload: any, productId: string): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseUrl}/updateProduct/${productId}`, payload, this.getHeaders());
+  }
+
   getProductListData(pageNumber: number, pageSize: number, search: string): Observable<void> {
     return this.httpClient.get<void>(`${this.baseUrl}/productList?page=${pageNumber}&limit=${pageSize}&search=${search}`, this.getHeaders());
   }

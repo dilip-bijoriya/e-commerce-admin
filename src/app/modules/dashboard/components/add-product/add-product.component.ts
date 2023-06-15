@@ -4,6 +4,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { BUTTON_TYPE, LOGIN_TYPE } from 'src/app/modules/auth/components/constant';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -12,6 +13,7 @@ import { ProductService } from '../../services/product.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AddProductComponent implements OnInit {
+  private readonly destroy$: Subject<void> = new Subject();
   form: FormGroup;
   label = BUTTON_TYPE.LABEL;
   type = LOGIN_TYPE.TYPE;
@@ -21,7 +23,7 @@ export class AddProductComponent implements OnInit {
   isDisabled: boolean = false;
   isReadOnly: boolean = false;
   productId: any;
-  uploadedFiles: File[] = [];
+  uploadedImages: string[] = [];
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -31,13 +33,20 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.fb.group({});
+    this.form = this.fb.group({
+      image: ['']
+    });
 
     this.innerHeight = window.innerHeight - 100;
     if (this.productId) {
       this.getByOneProduct();
       this.label = BUTTON_TYPE.UPDATE_LABEL;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -49,7 +58,7 @@ export class AddProductComponent implements OnInit {
   private getByOneProduct() {
     this.productService.getByOne(this.productId).pipe().subscribe({
       next: (res: any) => {
-        this.uploadedFiles = res.response.image;
+        this.uploadedImages = res.response.image;
         this.form.get('name')?.setValue(res.response.name);
         this.form.get('category')?.setValue(res.response.category);
         this.form.get('description')?.setValue(res.response.description);
@@ -62,7 +71,7 @@ export class AddProductComponent implements OnInit {
     })
   }
 
-  onProductClick() {
+  onProductClick(): void {
     if (this.label === BUTTON_TYPE.UPDATE_LABEL) {
       this.updateProduct();
     } else {
@@ -72,7 +81,16 @@ export class AddProductComponent implements OnInit {
 
   private createProduct(): void {
     if (this.form.valid) {
-      return console.log(this.form.value);
+      this.form.value.image = this.uploadedImages;
+      const payload = this.form.value
+      this.productService.createProduct(payload).pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (res: any) => {
+            console.log(res);
+          },
+          error: () => {
+          },
+        });
     } else {
       Object.values(this.form.controls).forEach((control) => {
         control.markAsTouched();
@@ -81,11 +99,25 @@ export class AddProductComponent implements OnInit {
   }
 
   private updateProduct(): void {
-    console.log('update');
+    if (this.form.valid) {
+      this.form.value.image = this.uploadedImages;
+      const payload = this.form.value
+      this.productService.updateProduct(this.productId, payload).pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (res: any) => {
+            console.log(res);
+          },
+          error: () => {
+          },
+        });
+    } else {
+      Object.values(this.form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
   }
 
-  onFilesUploaded(files: File[]) {
-    this.uploadedFiles = files;
-    console.log(this.uploadedFiles);
+  onFilesUploaded(files: string[]) {
+    this.uploadedImages = files;
   }
 }

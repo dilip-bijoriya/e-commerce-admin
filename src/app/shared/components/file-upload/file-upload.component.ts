@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { getBase64FromImages } from 'src/app/util/imgToBase64.util';
 
 @Component({
   selector: 'app-file-upload',
@@ -7,18 +8,19 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
   encapsulation: ViewEncapsulation.None
 })
 export class FileUploadComponent implements OnInit {
-  @Input() files: File[] = [];
-  @Output() filesUploaded: EventEmitter<File[]> = new EventEmitter<File[]>();
-  images: Array<any> = [];
+  @Input() images: string[] = [];
+  files: File[] = [];
+  @Output() filesUrl: EventEmitter<string[]> = new EventEmitter<string[]>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onFileChange(event: any) {
+  async onFileChange(event: any) {
     this.files = Array.from(event.target.files);
-    this.images = this.files.map(file => URL.createObjectURL(file));
-    this.filesUploaded.emit(this.images);
+    this.images.push(... await getBase64FromImages(this.files));
+    this.filesUrl.emit(this.images);
   }
 
 

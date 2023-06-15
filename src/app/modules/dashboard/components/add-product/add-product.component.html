@@ -61,14 +61,12 @@
                 <div class="grid">
 
                     <!-- <input type="file" id="file"> -->
-                    <app-file-upload [files]="uploadedFiles"
-                        (filesUploaded)="onFilesUploaded($event)"></app-file-upload>
+                    <app-file-upload [images]="uploadedImages" (filesUrl)="onFilesUploaded($event)"></app-file-upload>
 
                 </div>
             </div>
 
             <div class="commonBtn">
-                <!-- <button type="submit" class="primary-btn" (click)="submit()">Create</button> -->
                 <app-button [label]="label" [class]="class" type="submit" (clicked)="onProductClick()"></app-button>
             </div>
 
