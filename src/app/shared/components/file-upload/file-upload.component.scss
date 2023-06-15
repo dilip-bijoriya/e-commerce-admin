@@ -1,3 +1,56 @@
-.image-grid img {
-    display: grid;
+app-file-upload {
+    width: 100%;
+
+    .grid-row {
+        display: flex;
+        // width: 600px;
+        flex-wrap: wrap;
+    }
+
+    input[type="file"] {
+        position: absolute;
+        z-index: -1;
+        top: 6px;
+        left: 0px;
+        font-size: 15px;
+        color: rgb(153, 153, 153);
+    }
+
+    .button-wrap {
+        position: relative;
+    }
+
+    .new-button {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid #00b382;
+        height: 115px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .image-container {
+        height: 115px;
+        border: 1px solid #00b382;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-right: 20px;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        flex: 0 0 10%;
+        margin-bottom: 10px;
+    }
+
+    .icon-close-outline-2 {
+        top: -8px;
+        position: absolute;
+        right: -9px;
+        cursor: pointer;
+        color: #808080;
+    }
 }

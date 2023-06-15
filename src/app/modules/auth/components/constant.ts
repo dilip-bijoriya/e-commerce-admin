@@ -6,5 +6,6 @@ export enum LOGIN_TYPE {
 }
 
 export enum BUTTON_TYPE {
-    LABEL = 'Create'
+    LABEL = 'Create',
+    UPDATE_LABEL = 'Update'
 }

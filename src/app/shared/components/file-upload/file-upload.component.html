@@ -1,10 +1,12 @@
-<div>
-    <input type="file" (change)="onFileChange($event)" multiple>
-</div>
+<div class="grid-row">
+    <div class="image-container" [ngStyle]="{'background-image':'url(' + files + ')'}"
+        *ngFor="let files of images; let i = index">
+        <i class="icon-close-outline-2" (click)="delete(i)"></i>
+    </div>
 
-<div *ngFor="let files of images; let i = index" class="image-grid">
-    <img [src]="files" alt="Image" width="100">
-    <button (click)="delete(i)">
-        <i class="icon-trash-outline-1"></i>
-    </button>
+    <div class="button-wrap" *ngIf="images.length <= 4">
+        <label class="new-button" for="upload"><i class="icon-plus-outline-1"></i><span
+                style="margin-top: 10px;font-size: 11px;">Add Image</span> </label>
+        <input id="upload" type="file" name="image" multiple="" (change)="onFileChange($event)" />
+    </div>
 </div>

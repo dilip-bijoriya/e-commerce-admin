@@ -1,4 +1,4 @@
-<div class="main-cont">
+<div class="main-cont" [ngStyle]="{'height.px':  innerHeight}">
     <div class="searchBox">
         <div class="filterArea">
             Add Product
@@ -6,7 +6,7 @@
     </div>
 
     <form [formGroup]="form">
-        <div [ngStyle]="{'height.px':  innerHeight}">
+        <div>
             <div class="box form-box">
                 <h1>Basic Information</h1>
                 <div class="grid">
@@ -59,16 +59,17 @@
             <div class="box form-box">
                 <h1>Images</h1>
                 <div class="grid">
-                    <div class="input-group grid3">
-                        <!-- <input type="file" id="file"> -->
-                        <app-file-upload [files]="uploadedFiles"
-                            (filesUploaded)="onFilesUploaded($event)"></app-file-upload>
-                    </div>
+
+                    <!-- <input type="file" id="file"> -->
+                    <app-file-upload [files]="uploadedFiles"
+                        (filesUploaded)="onFilesUploaded($event)"></app-file-upload>
+
                 </div>
             </div>
 
             <div class="commonBtn">
-                <button type="submit" class="primary-btn" (click)="submit()">Create</button>
+                <!-- <button type="submit" class="primary-btn" (click)="submit()">Create</button> -->
+                <app-button [label]="label" [class]="class" type="submit" (clicked)="onProductClick()"></app-button>
             </div>
 
         </div>

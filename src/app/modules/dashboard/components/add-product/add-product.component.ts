@@ -33,33 +33,44 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({});
 
-    this.innerHeight = window.innerHeight - 200;
+    this.innerHeight = window.innerHeight - 100;
     if (this.productId) {
       this.getByOneProduct();
+      this.label = BUTTON_TYPE.UPDATE_LABEL;
     }
   }
 
   @HostListener('window:resize', ['$event'])
 
   onWindowResize() {
-    this.innerHeight = window.innerHeight - 200;
+    this.innerHeight = window.innerHeight - 100;
   }
 
   private getByOneProduct() {
     this.productService.getByOne(this.productId).pipe().subscribe({
       next: (res: any) => {
+        this.uploadedFiles = res.response.image;
         this.form.get('name')?.setValue(res.response.name);
         this.form.get('category')?.setValue(res.response.category);
         this.form.get('description')?.setValue(res.response.description);
         this.form.get('price')?.setValue(res.response.price);
         this.form.get('inventry')?.setValue(res.response.inventry);
         this.form.get('tags')?.setValue(res.response.tags);
+
       },
       error: () => { }
     })
   }
 
-  submit() {
+  onProductClick() {
+    if (this.label === BUTTON_TYPE.UPDATE_LABEL) {
+      this.updateProduct();
+    } else {
+      this.createProduct();
+    }
+  }
+
+  private createProduct(): void {
     if (this.form.valid) {
       return console.log(this.form.value);
     } else {
@@ -67,10 +78,14 @@ export class AddProductComponent implements OnInit {
         control.markAsTouched();
       });
     }
+  }
 
+  private updateProduct(): void {
+    console.log('update');
   }
 
   onFilesUploaded(files: File[]) {
     this.uploadedFiles = files;
+    console.log(this.uploadedFiles);
   }
 }
