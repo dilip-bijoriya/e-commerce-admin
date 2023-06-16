@@ -23,7 +23,6 @@ export class FileUploadComponent implements OnInit {
     this.filesUrl.emit(this.images);
   }
 
-
   delete(index: number) {
     this.images.splice(index, 1);
   }

@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   updateProduct(payload: any, productId: string): Observable<void> {
-    return this.httpClient.post<void>(`${this.baseUrl}/updateProduct/${productId}`, payload, this.getHeaders());
+    return this.httpClient.put<void>(`${this.baseUrl}/updateProduct/${productId}`, payload, this.getHeaders());
   }
 
   getProductListData(pageNumber: number, pageSize: number, search: string): Observable<void> {

@@ -9,9 +9,6 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class SidebarComponent implements OnInit {
-  constructor(private router: Router) { }
-  public innerHeight: any;
-
   sidebarData: Array<any> = [
     {
       name: 'Inventry',
@@ -39,6 +36,9 @@ export class SidebarComponent implements OnInit {
       icon: 'icon-setting-outline-1'
     },
   ]
+  public innerHeight: any;
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
     this.innerHeight = window.innerHeight - 100;
@@ -50,7 +50,12 @@ export class SidebarComponent implements OnInit {
     this.innerHeight = window.innerHeight - 100;
   }
 
+  class: any
   navigationClick(item: string): void {
     this.router.navigate([item]);
+  }
+
+  isLinkActive(path: string): boolean {
+    return this.router.isActive(path, true);
   }
 }

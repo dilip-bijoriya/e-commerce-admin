@@ -89,3 +89,21 @@ app-inventory {
     }
   }
 }
+
+.textCenter {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.active a {
+  background: #00b382 !important;
+  color: #fff !important;
+  padding: 10px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 92%;
+  .icon {
+    color: #fff !important;
+  }
+}

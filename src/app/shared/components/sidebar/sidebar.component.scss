@@ -11,6 +11,18 @@
   padding: 0rem;
 }
 
+.active a {
+  background: #00b382 !important;
+  color: #fff !important;
+  padding: 10px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 92%;
+  .icon {
+    color: #fff !important;
+  }
+}
+
 app-sidebar {
   // margin-top: 100px;
 }
@@ -32,28 +44,30 @@ app-sidebar {
   width: 30px;
   display: inline-block;
 }
+
 a {
   display: flex;
   margin: 20px;
 }
+
 .icon {
   margin-right: 18px;
   margin-top: -5px;
 }
 
 .wrapper .sidebar ul li a:hover,
-.wrapper .sidebar ul li a.active {
+.wrapper .sidebar ul li a {
   color: #000000;
   background: white;
 }
 
 .wrapper .sidebar ul li a:hover .icon,
-.wrapper .sidebar ul li a.active .icon {
+.wrapper .sidebar ul li a .icon {
   color: #000000;
 }
 
 .wrapper .sidebar ul li a:hover:before,
-.wrapper .sidebar ul li a.active:before {
+.wrapper .sidebar ul li a:before {
   display: block;
 }
 

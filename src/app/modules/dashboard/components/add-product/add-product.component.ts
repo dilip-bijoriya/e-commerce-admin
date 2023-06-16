@@ -2,9 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import { BUTTON_TYPE, LOGIN_TYPE } from 'src/app/modules/auth/components/constant';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Subject, takeUntil } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -27,7 +28,9 @@ export class AddProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
   }
@@ -65,7 +68,6 @@ export class AddProductComponent implements OnInit {
         this.form.get('price')?.setValue(res.response.price);
         this.form.get('inventry')?.setValue(res.response.inventry);
         this.form.get('tags')?.setValue(res.response.tags);
-
       },
       error: () => { }
     })
@@ -86,9 +88,11 @@ export class AddProductComponent implements OnInit {
       this.productService.createProduct(payload).pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (res: any) => {
-            console.log(res);
+            this.toastr.success(res.message);
+            this.router.navigate(['/dashboard/inventry']);
           },
-          error: () => {
+          error: (err) => {
+            this.toastr.success(err.message);
           },
         });
     } else {
@@ -102,12 +106,14 @@ export class AddProductComponent implements OnInit {
     if (this.form.valid) {
       this.form.value.image = this.uploadedImages;
       const payload = this.form.value
-      this.productService.updateProduct(this.productId, payload).pipe(takeUntil(this.destroy$))
+      this.productService.updateProduct(payload, this.productId).pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (res: any) => {
-            console.log(res);
+            this.toastr.success(res.message);
+            this.router.navigate(['/dashboard/inventry']);
           },
-          error: () => {
+          error: (error) => {
+            this.toastr.success(error.message);
           },
         });
     } else {
