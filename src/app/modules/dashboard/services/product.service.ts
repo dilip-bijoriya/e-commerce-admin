@@ -30,6 +30,10 @@ export class ProductService {
     return this.httpClient.get<void>(`${this.baseUrl}/productList?page=${pageNumber}&limit=${pageSize}&search=${search}`, this.getHeaders());
   }
 
+  getGroupList(): Observable<void> {
+    return this.httpClient.get<void>(`${this.baseUrl}/groupList`, this.getHeaders());
+  }
+
   delete(productId: string): Observable<void> {
     return this.httpClient.post<void>(`${this.baseUrl}/deleteProduct/${productId}`, null, this.getHeaders());
   }

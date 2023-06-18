@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -25,6 +26,13 @@ export class AddProductComponent implements OnInit {
   isReadOnly: boolean = false;
   productId: any;
   uploadedImages: string[] = [];
+  dropdownList: Array<any> = [];
+  dropdownSettings = {};
+
+  get f() {
+    return this.form.controls;
+  }
+
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -33,11 +41,22 @@ export class AddProductComponent implements OnInit {
     private router: Router
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: '_id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
   ngOnInit() {
+    this.getGroupList();
     this.form = this.fb.group({
-      image: ['']
+      image: [''],
+      tags: ['', [Validators.required]]
     });
 
     this.innerHeight = window.innerHeight - 100;
@@ -45,6 +64,13 @@ export class AddProductComponent implements OnInit {
       this.getByOneProduct();
       this.label = BUTTON_TYPE.UPDATE_LABEL;
     }
+  }
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
   }
 
   ngOnDestroy(): void {
@@ -58,9 +84,26 @@ export class AddProductComponent implements OnInit {
     this.innerHeight = window.innerHeight - 100;
   }
 
+  private getGroupList() {
+    this.productService.getGroupList().pipe(takeUntil(this.destroy$)).subscribe({
+      next: (res: any) => {
+        this.dropdownList = res.response.data;
+        console.log(this.dropdownList);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  selectedItems: any;
   private getByOneProduct() {
     this.productService.getByOne(this.productId).pipe().subscribe({
       next: (res: any) => {
+        const idArray = res.response.tags;
+        const matchedGroups = this.dropdownList.filter(group => idArray.includes(group._id));
+        res.response.tags = matchedGroups;
+        this.form.value.tags = matchedGroups;
         this.uploadedImages = res.response.image;
         this.form.get('name')?.setValue(res.response.name);
         this.form.get('category')?.setValue(res.response.category);
@@ -82,6 +125,8 @@ export class AddProductComponent implements OnInit {
   }
 
   private createProduct(): void {
+    // const idArray = this.form.value.tags.map((item: any) => item._id);
+    // this.form.value.tags = idArray;
     if (this.form.valid) {
       this.form.value.image = this.uploadedImages;
       const payload = this.form.value

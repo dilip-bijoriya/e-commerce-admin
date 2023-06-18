@@ -15,6 +15,8 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+
 
 
 @NgModule({
@@ -28,14 +30,15 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     ModalConfirmCancelChangesComponent,
     PaginationComponent,
     ButtonComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    DropdownComponent
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     CustomModalService,
@@ -49,7 +52,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     ModalConfirmComponent,
     PaginationComponent,
     ButtonComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    DropdownComponent
   ]
 })
 export class SharedModule { }

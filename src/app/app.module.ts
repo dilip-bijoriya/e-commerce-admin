@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomModalService } from './services/custom-modal/custom-modal.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [CustomModalService, CookieService],
   bootstrap: [AppComponent]
