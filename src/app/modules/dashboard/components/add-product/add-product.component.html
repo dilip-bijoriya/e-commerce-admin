@@ -48,14 +48,17 @@
                             type="text" [parentForm]="form" id="description"></app-input>
                     </div>
                     <div class="input-group grid3">
-                        <label>Tags</label>
-                        <ng-multiselect-dropdown formControlName="tags" [settings]="dropdownSettings"
+                        <label class="label">Tags</label>
+                        <!-- <ng-multiselect-dropdown formControlName="tags" [settings]="dropdownSettings"
                             [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
                             [class.is-invalid]="f?.['tags']?.errors?.['required'] && f?.['tags']?.touched">
                         </ng-multiselect-dropdown>
                         <span *ngIf="f?.['tags']?.errors?.['required'] && f?.['tags']?.touched" style="color: red;">
                             Tags is required
-                        </span>
+                        </span> -->
+                        <p-multiSelect [options]="dropdownList" formControlName="tags" defaultLabel="Select a Groups"
+                            optionLabel="name" display="chip"></p-multiSelect>
+
                     </div>
                 </div>
             </div>

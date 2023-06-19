@@ -8,9 +8,7 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { ModalInventryComponent } from './components/modal-inventry/modal-inventry.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
-
+import { MultiSelectModule } from 'primeng/multiselect';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -24,7 +22,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    MultiSelectModule
   ]
 })
 export class DashboardModule { }

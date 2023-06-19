@@ -1,5 +1,5 @@
 <div [formGroup]="parentForm">
-    <label>{{ label }}</label>
+    <label class="label">{{ label }}</label>
     <input [formControlName]="controlName" [type]="type" [placeholder]="placeholder" [value]="value"
         [disabled]="disabled" [readonly]="readOnly" />
     <div *ngIf="f.invalid && f.touched">

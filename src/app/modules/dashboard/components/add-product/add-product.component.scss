@@ -11,7 +11,7 @@ app-add-product {
   padding: 8px;
   h1 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 29px;
     padding: 8px;
   }
@@ -33,3 +33,21 @@ app-add-product {
 .filterArea {
   padding: 8px;
 }
+
+.ng-select.custom {
+  border: 0px;
+  min-height: 0px;
+  border-radius: 0;
+}
+.ng-select.custom .ng-select-container {
+  min-height: 0px;
+  border-radius: 0;
+}
+
+.label {
+  font-size: 14px;
+}
+
+// .p-multiselect .p-multiselect-trigger {
+//   width: 5.357rem !important;
+// }

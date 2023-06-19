@@ -26,8 +26,8 @@ export class AddProductComponent implements OnInit {
   isReadOnly: boolean = false;
   productId: any;
   uploadedImages: string[] = [];
-  dropdownList: Array<any> = [];
-  dropdownSettings = {};
+  dropdownList: any;
+  dropdownSettings: any;
 
   get f() {
     return this.form.controls;
@@ -41,15 +41,6 @@ export class AddProductComponent implements OnInit {
     private router: Router
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: '_id',
-      textField: 'name',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
   }
 
   ngOnInit() {
@@ -61,16 +52,11 @@ export class AddProductComponent implements OnInit {
 
     this.innerHeight = window.innerHeight - 100;
     if (this.productId) {
-      this.getByOneProduct();
+      setTimeout(() => {
+        this.getByOneProduct();
+      }, 500);
       this.label = BUTTON_TYPE.UPDATE_LABEL;
     }
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
   }
 
   ngOnDestroy(): void {
@@ -88,7 +74,6 @@ export class AddProductComponent implements OnInit {
     this.productService.getGroupList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (res: any) => {
         this.dropdownList = res.response.data;
-        console.log(this.dropdownList);
       },
       error: (err) => {
         console.log(err);
@@ -96,12 +81,12 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  selectedItems: any;
+
   private getByOneProduct() {
     this.productService.getByOne(this.productId).pipe().subscribe({
       next: (res: any) => {
         const idArray = res.response.tags;
-        const matchedGroups = this.dropdownList.filter(group => idArray.includes(group._id));
+        const matchedGroups = this.dropdownList?.filter((group: any) => idArray.includes(group._id));
         res.response.tags = matchedGroups;
         this.form.value.tags = matchedGroups;
         this.uploadedImages = res.response.image;
@@ -110,7 +95,7 @@ export class AddProductComponent implements OnInit {
         this.form.get('description')?.setValue(res.response.description);
         this.form.get('price')?.setValue(res.response.price);
         this.form.get('inventry')?.setValue(res.response.inventry);
-        this.form.get('tags')?.setValue(res.response.tags);
+        this.form.get('tags')?.setValue(res?.response?.tags);
       },
       error: () => { }
     })
