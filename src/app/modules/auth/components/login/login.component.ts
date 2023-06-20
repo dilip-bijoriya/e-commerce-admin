@@ -58,7 +58,7 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           this.cookie.set('blue_basket', JSON.stringify(res));
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/admin']);
         },
         error: (error) => { },
       });

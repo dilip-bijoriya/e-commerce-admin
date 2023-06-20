@@ -1,12 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ViewEncapsulation } from '@angular/core';
-import { BUTTON_TYPE, LOGIN_TYPE } from 'src/app/modules/auth/components/constant';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../services/product.service';
 import { Subject, takeUntil } from 'rxjs';
+import { BUTTON_TYPE, LOGIN_TYPE } from 'src/app/modules/auth/components/constant';
+import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-add-product',
@@ -119,7 +117,7 @@ export class AddProductComponent implements OnInit {
         .subscribe({
           next: (res: any) => {
             this.toastr.success(res.message);
-            this.router.navigate(['/dashboard/inventry']);
+            this.router.navigate(['/admin/products/product']);
           },
           error: (err) => {
             this.toastr.success(err.message);
@@ -140,7 +138,7 @@ export class AddProductComponent implements OnInit {
         .subscribe({
           next: (res: any) => {
             this.toastr.success(res.message);
-            this.router.navigate(['/dashboard/inventry']);
+            this.router.navigate(['/admin/products/product']);
           },
           error: (error) => {
             this.toastr.success(error.message);

@@ -1,20 +1,20 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { Subject, filter, takeUntil } from 'rxjs';
-import { ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/modal-confirm.component';
+import { Subject, filter } from 'rxjs';
+import { CustomerService } from '../../services/customer.service';
 import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/modal-confirm.component';
+
 @Component({
-  selector: 'app-inventory',
-  templateUrl: './inventory.component.html',
-  styleUrls: ['./inventory.component.scss'],
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class InventoryComponent implements OnInit {
-  productList: Array<any> = [];
+export class CustomersComponent implements OnInit {
+  customerList: Array<any> = [];
   public onPagination = new Subject();
   listFound: boolean;
   public innerHeight: any;
@@ -27,17 +27,15 @@ export class InventoryComponent implements OnInit {
   };
 
   constructor(
-    private productService: ProductService,
+    private customerService: CustomerService,
     private CustomModalService: CustomModalService,
     private toastr: ToastrService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.fetchProductData();
+    this.getCustomerList();
     this.innerHeight = window.innerHeight - 240;
-
-
   }
 
   @HostListener('window:resize', ['$event'])
@@ -46,16 +44,16 @@ export class InventoryComponent implements OnInit {
     this.innerHeight = window.innerHeight - 240;
   }
 
-  private fetchProductData() {
-    this.productService
-      .getProductListData(this.search.offset, this.search.size, this.search.text)
+  private getCustomerList() {
+    this.customerService
+      .getCustomerListData(this.search.offset, this.search.size, this.search.text)
       .pipe()
       .subscribe({
         next: (res: any) => {
           this.listFound = true;
           this.search.total = res.response.total;
           this.onPagination.next(this.search);
-          this.productList = res.response.data;
+          this.customerList = res.response.data;
           this.search.offset
         },
         error: () => {
@@ -66,18 +64,18 @@ export class InventoryComponent implements OnInit {
 
   onPaginationChange(page: number) {
     this.search.offset = page;
-    this.fetchProductData();
+    this.getCustomerList();
   }
 
   onTextChange(event: any) {
     this.search.offset = 1;
     this.search.text = event;
-    this.fetchProductData();
+    this.getCustomerList();
   }
 
-  openConfirmModal(productId: string): void {
+  openConfirmModal(customerId: string): void {
     const initialState = {
-      headerTitle: 'Delete Product',
+      headerTitle: 'Delete Customer',
       confirmMessage: 'Are you sure you want to proceed?'
     };
     this.bsModalRef = this.CustomModalService.show(ModalConfirmComponent, {
@@ -88,16 +86,16 @@ export class InventoryComponent implements OnInit {
       .pipe(
         filter((result: boolean) => result)
       )
-      .subscribe(() => this.confirmDelete(productId));
+      .subscribe(() => this.confirmDelete(customerId));
   }
 
-  confirmDelete(productId: string): void {
-    this.productService.delete(productId).pipe()
+  confirmDelete(customerId: string): void {
+    this.customerService.delete(customerId).pipe()
       .subscribe({
         next: (res: any) => {
           this.bsModalRef.hide();
           this.toastr.success(res.message);
-          this.fetchProductData();
+          this.getCustomerList();
         },
         error: (err) => {
           this.toastr.success(err.message);
@@ -105,7 +103,7 @@ export class InventoryComponent implements OnInit {
       });
   }
 
-  editClick(productId: string) {
-    this.router.navigate(['/dashboard/add-product', productId, 'update']);
+  editClick(customerId: string) {
+    this.router.navigate(['/admin/customers/add-customer', customerId]);
   }
 }

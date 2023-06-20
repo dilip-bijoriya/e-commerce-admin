@@ -3,13 +3,13 @@
         <div class="filterArea">
             <i class="icon-research-outline-1"></i>
             <input type="text" (ngModelChange)="onTextChange($event)" [(ngModel)]="search.text"
-                placeholder="Search inventory...">
+                placeholder="Search customer...">
             <i class="icon-filters-outline-1" style="margin-right: 2rem;"></i>
         </div>
 
-        <button class="prime-btn" [routerLink]="['/dashboard/add-product']">
+        <button class="prime-btn" [routerLink]="['/admin/customers/add-customer']">
             <i class="icon-plus-outline-1"></i>
-            Add Product
+            Add Customer
         </button>
     </div>
 
@@ -19,22 +19,18 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Image</th>
                     <th>Name</th>
-                    <th>price</th>
-                    <th>category</th>
+                    <th>Email</th>
+                    <th>phone</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody *ngIf=listFound>
-                <tr *ngFor="let item of productList; let i = index">
+                <tr *ngFor="let item of customerList; let i = index">
                     <td>{{(i+1)+((search.offset-1)*search.size)}}</td>
-                    <td>
-                        <img src="{{item?.image[0]}}" class="productImage" alt="">
-                    </td>
-                    <td>{{item?.name}}</td>
-                    <td>$ {{item?.price}}</td>
-                    <td>{{item?.category}}</td>
+                    <td>{{item?.name?.fname}} {{item?.name?.lname}}</td>
+                    <td>{{item?.email}}</td>
+                    <td>{{item?.phone}}</td>
                     <td>
                         <button type="button" class="button" (click)="openConfirmModal(item?._id)">
                             <i class="icon-trash-outline-1"></i>

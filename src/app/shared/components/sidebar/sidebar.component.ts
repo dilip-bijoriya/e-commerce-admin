@@ -12,12 +12,12 @@ export class SidebarComponent implements OnInit {
   sidebarData: Array<any> = [
     {
       name: 'Inventry',
-      path: '/dashboard/inventry',
+      path: '/admin/products/product',
       icon: 'icon-buggy-concrete-concrete-trolley-construction-trolley-construction-wheel-barrow-outline-1'
     },
     {
       name: 'Customers',
-      path: '',
+      path: '/admin/customers/customer',
       icon: 'icon-account-outline-1'
     },
     {
