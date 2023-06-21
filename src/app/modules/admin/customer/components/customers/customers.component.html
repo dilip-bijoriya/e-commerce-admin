@@ -28,7 +28,7 @@
             <tbody *ngIf=listFound>
                 <tr *ngFor="let item of customerList; let i = index">
                     <td>{{(i+1)+((search.offset-1)*search.size)}}</td>
-                    <td>{{item?.name?.fname}} {{item?.name?.lname}}</td>
+                    <td>{{item?.name?.fname || '---'}} {{item?.name?.lname || '---'}}</td>
                     <td>{{item?.email}}</td>
                     <td>{{item?.phone}}</td>
                     <td>

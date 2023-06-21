@@ -7,6 +7,8 @@ import { filter } from 'rxjs';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { CustomModalService } from 'src/app/services/custom-modal/custom-modal.service';
 import { ViewEncapsulation } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +18,12 @@ import { ViewEncapsulation } from '@angular/core';
 export class HeaderComponent {
   bsModalRef!: BsModalRef;
   count: number = 2;
-  constructor(private CustomModalService: CustomModalService) { }
+
+  constructor(
+    private CustomModalService: CustomModalService,
+    private cookie: CookieService,
+    private router: Router
+  ) { }
 
   logOut() {
     this.bsModalRef = this.CustomModalService.show(ModalLogoutComponent, {

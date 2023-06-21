@@ -1,1 +1,43 @@
-<p>add-customer works!</p>
+<div class="main-cont" [ngStyle]="{'height.px':  innerHeight}">
+    <div class="searchBox">
+        <div class="filterArea">
+            Add Customer
+        </div>
+    </div>
+
+    <form [formGroup]="form">
+        <div>
+            <div class="box form-box">
+                <h1>Basic Information</h1>
+                <div class="grid flex-wrap">
+                    <div class="input-group grid3">
+                        <app-input label="First name" controlName="fname" placeholder="Enter first name" type="text"
+                            [parentForm]="form" id="name" [value]="initialValue" [disabled]="isDisabled"
+                            [readOnly]="isReadOnly"></app-input>
+                    </div>
+                    <div class="input-group grid3">
+                        <app-input label="Last name" controlName="lname" placeholder="Enter last name" type="text"
+                            [parentForm]="form" id="lname"></app-input>
+                    </div>
+                    <div class="input-group grid3">
+                        <app-input label="Email" controlName="email" placeholder="Enter email" type="email"
+                            [parentForm]="form" id="email"></app-input>
+                    </div>
+                    <div class="input-group grid3" *ngIf="this.label === 'Create'">
+                        <app-input label="Password" controlName="password" placeholder="Enter password" type="password"
+                            [parentForm]="form" id="password"></app-input>
+                    </div>
+                    <div class="input-group grid3">
+                        <app-input label="Phone" controlName="phone" placeholder="Enter phone" type="phone"
+                            [parentForm]="form" id="phone"></app-input>
+                    </div>
+                </div>
+            </div>
+            <div class="commonBtn">
+                <app-button [label]="label" [class]="class" type="submit" (clicked)="onCustomerClick()"></app-button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -19,18 +19,22 @@ export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
-  })
+  });
+
   submitted = false;
   private readonly destroy$: Subject<void> = new Subject<void>();
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: ServiceService,
     private router: Router,
     private cookie: CookieService
   ) { }
+
   get f() {
     return this.loginForm.controls;
   }
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

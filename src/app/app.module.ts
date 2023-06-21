@@ -8,6 +8,7 @@ import { CustomModalService } from './services/custom-modal/custom-modal.service
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuardGuard } from './services/auth-guard/auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [CustomModalService, CookieService],
+  providers: [CustomModalService, CookieService, AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,39 @@
+@import "src/styles/variables.scss";
+
+app-add-customer {
+    .main-cont {
+        // height: 390px;
+        overflow-y: auto;
+    }
+}
+
+.box {
+    padding: 8px;
+    h1 {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 29px;
+        padding: 8px;
+    }
+}
+
+.input-group input {
+    background: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    height: 37px;
+    padding: 2px;
+}
+
+.commonBtn {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.filterArea {
+    padding: 8px;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}

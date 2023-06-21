@@ -9,23 +9,21 @@
         <div>
             <div class="box form-box">
                 <h1>Basic Information</h1>
-                <div class="grid">
+                <div class="grid flex-wrap">
                     <div class="input-group grid3">
-                        <!-- <label for="name">Name</label> -->
-                        <!-- <input type="text" placeholder="Enter name" id="name"> -->
                         <app-input label="Name" controlName="name" placeholder="Enter name" type="text"
                             [parentForm]="form" id="name" [value]="initialValue" [disabled]="isDisabled"
                             [readOnly]="isReadOnly"></app-input>
                     </div>
                     <div class="input-group grid3">
-                        <!-- <label for="category">Category</label>
-                        <input type="text" placeholder="Enter Category" id="category"> -->
                         <app-input label="Category" controlName="category" placeholder="Enter Category" type="text"
                             [parentForm]="form" id="category"></app-input>
                     </div>
                     <div class="input-group grid3">
-                        <!-- <label for="inventry">Inventry</label>
-                        <input type="text" placeholder="Enter inventry" id="inventry"> -->
+                        <app-input label="Price" controlName="price" placeholder="Enter Price" type="number"
+                            [parentForm]="form" id="price"></app-input>
+                    </div>
+                    <div class="input-group grid3">
                         <app-input label="Inventry" controlName="inventry" placeholder="Enter Inventry" type="number"
                             [parentForm]="form" id="inventry"></app-input>
                     </div>
@@ -34,28 +32,13 @@
 
             <div class="box form-box">
                 <h1>Pricing And avalabelity</h1>
-                <div class="grid">
+                <div class="grid flex-wrap">
                     <div class="input-group grid3">
-                        <!-- <label for="Price">Price</label>
-                        <input type="number" placeholder="Enter price" id="Price"> -->
-                        <app-input label="Price" controlName="price" placeholder="Enter Price" type="number"
-                            [parentForm]="form" id="price"></app-input>
-                    </div>
-                    <div class="input-group grid3">
-                        <!-- <label for="description">Description</label>
-                        <input type="text" placeholder="Enter description" id="description"> -->
                         <app-input label="Description" controlName="description" placeholder="Enter Description"
                             type="text" [parentForm]="form" id="description"></app-input>
                     </div>
                     <div class="input-group grid3">
                         <label class="label">Tags</label>
-                        <!-- <ng-multiselect-dropdown formControlName="tags" [settings]="dropdownSettings"
-                            [data]="dropdownList" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
-                            [class.is-invalid]="f?.['tags']?.errors?.['required'] && f?.['tags']?.touched">
-                        </ng-multiselect-dropdown>
-                        <span *ngIf="f?.['tags']?.errors?.['required'] && f?.['tags']?.touched" style="color: red;">
-                            Tags is required
-                        </span> -->
                         <p-multiSelect [options]="dropdownList" formControlName="tags" defaultLabel="Select a Groups"
                             optionLabel="name" display="chip"></p-multiSelect>
 
@@ -66,10 +49,7 @@
             <div class="box form-box">
                 <h1>Images</h1>
                 <div class="grid">
-
-                    <!-- <input type="file" id="file"> -->
                     <app-file-upload [images]="uploadedImages" (filesUrl)="onFilesUploaded($event)"></app-file-upload>
-
                 </div>
             </div>
 
