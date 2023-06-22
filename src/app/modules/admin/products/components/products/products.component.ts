@@ -36,8 +36,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.fetchProductData();
     this.innerHeight = window.innerHeight - 240;
-
-
   }
 
   @HostListener('window:resize', ['$event'])
@@ -56,9 +54,10 @@ export class ProductsComponent implements OnInit {
           this.search.total = res.response.total;
           this.onPagination.next(this.search);
           this.productList = res.response.data;
-          this.search.offset
+          this.search.offset;
         },
-        error: () => {
+        error: (err) => {
+          console.log(err);
           this.listFound = false;
         },
       });

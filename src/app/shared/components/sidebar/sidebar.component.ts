@@ -11,7 +11,7 @@ declare var $: any;
 export class SidebarComponent implements OnInit {
   sidebarData: Array<any> = [
     {
-      name: 'Inventry',
+      name: 'Inventory',
       path: '/admin/products/product',
       icon: 'icon-buggy-concrete-concrete-trolley-construction-trolley-construction-wheel-barrow-outline-1'
     },

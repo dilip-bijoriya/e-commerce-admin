@@ -16,7 +16,7 @@ export class ModalLogoutComponent {
     private router: Router
   ) { }
 
-  logout() {
+  logout(): void {
     try {
       this.cookie.delete("blue_basket")
       this.router.navigateByUrl('/auth/login');

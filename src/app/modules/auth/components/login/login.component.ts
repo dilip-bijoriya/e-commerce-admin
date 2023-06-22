@@ -29,7 +29,8 @@ export class LoginComponent {
     private authService: ServiceService,
     private router: Router,
     private cookie: CookieService
-  ) { }
+  ) {
+  }
 
   get f() {
     return this.loginForm.controls;
