@@ -1,61 +1,78 @@
 <div class="main-cont">
-    <div class="searchBox">
-        <div class="filterArea">
-            <i class="icon-research-outline-1"></i>
-            <input type="text" (ngModelChange)="onTextChange($event)" [(ngModel)]="search.text"
-                placeholder="Search customer...">
-            <i class="icon-filters-outline-1" style="margin-right: 2rem;"></i>
-        </div>
-
-        <button class="prime-btn" [routerLink]="['/admin/customers/add-customer']">
-            <i class="icon-plus-outline-1"></i>
-            Add Customer
-        </button>
+  <div class="searchBox">
+    <div class="filterArea">
+      <i class="icon-research-outline-1"></i>
+      <input
+        type="text"
+        (ngModelChange)="onTextChange($event)"
+        [(ngModel)]="search.text"
+        placeholder="Search customer..."
+      />
+      <i class="icon-filters-outline-1" style="margin-right: 2rem"></i>
     </div>
 
-    <div class="box tableBox" [ngStyle]="{'height.px':  innerHeight}">
-        <!-- table code here  -->
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>phone</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody *ngIf=listFound>
-                <tr *ngFor="let item of customerList; let i = index">
-                    <td>{{(i+1)+((search.offset-1)*search.size)}}</td>
-                    <td>{{item?.name?.fname || '---'}} {{item?.name?.lname || '---'}}</td>
-                    <td>{{item?.email}}</td>
-                    <td>{{item?.phone}}</td>
-                    <td>
-                        <button type="button" class="button" (click)="openConfirmModal(item?._id)">
-                            <i class="icon-trash-outline-1"></i>
-                        </button>
-                        <button type="button" (click)="editClick(item?._id)" style="margin-left: 12px;" class="button">
-                            <i class="icon-pencil-outline-1"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody *ngIf=!listFound>
-                <tr>
-                    <th colspan="12" class="textCenter">No Data Available</th>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <button class="prime-btn" [routerLink]="['/admin/customers/add-customer']">
+      <i class="icon-plus-outline-1"></i>
+      Add Customer
+    </button>
+  </div>
 
-
+  <div class="box tableBox" [ngStyle]="{ 'height.px': innerHeight }">
+    <!-- table code here  -->
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="listFound">
+        <tr *ngFor="let item of customerList; let i = index">
+          <td>{{ i + 1 + (search.offset - 1) * search.size }}</td>
+          <td>
+            {{ item?.name?.fname || "---" }} {{ item?.name?.lname || "---" }}
+          </td>
+          <td>{{ item?.email }}</td>
+          <td>{{ item?.phone }}</td>
+          <td>
+            <button
+              type="button"
+              class="button deleteBtn"
+              (click)="openConfirmModal(item?._id)"
+            >
+              <i class="icon-trash-outline-1"></i>
+            </button>
+            <button
+              type="button"
+              (click)="editClick(item?._id)"
+              class="button editBtn"
+            >
+              <i class="icon-pencil-outline-1"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!listFound">
+        <tr>
+          <th colspan="12" class="textCenter">No Data Available</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="pageing">
-    <p>Show 50 out of 200 items</p>
-    <div class="pagination">
-        <app-pagination class="pagination-div" [limit]="search.size" (onPaginationChange)="onPaginationChange($event)"
-            [total]="search.total" [selected]="search.offset">
-        </app-pagination>
-    </div>
+  <p>Show {{ this.search.size }} out of {{ this.search.total }} items</p>
+  <div class="pagination">
+    <app-pagination
+      class="pagination-div"
+      [limit]="search.size"
+      (onPaginationChange)="onPaginationChange($event)"
+      [total]="search.total"
+      [selected]="search.offset"
+    >
+    </app-pagination>
+  </div>
 </div>
